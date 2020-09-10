@@ -1,19 +1,15 @@
 
+
 class TempManager {
 
     constructor() {
         this.cityData = [];
-
     }
+
     async getDataFromDB() {
         const data = await $.get(`/cities`)
         this.cityData = [...this.cityData, ...data]
-        this.cityData.forEach(i => {
-            i.updatedAt = moment().format('MMMM Do YYYY, h:mm:ss a')
-
-        });
     }
-
 
     async geoFindMe(position) {
 
@@ -23,17 +19,13 @@ class TempManager {
 
         const data = await $.get(`/cityG/${latLang}`)
 
-        let convertedFromFToC = data.main.temp - 273.15
-        let realFeelconvertedFromFToC = data.main.feels_like - 273.15
-        convertedFromFToC = convertedFromFToC.toFixed(1)
-        realFeelconvertedFromFToC = realFeelconvertedFromFToC.toFixed(1)
         const cityData = {
-            updatedAt: moment().format('MMMM Do YYYY, h:mm:ss a'),
+            updatedAt: new moment().format('MMMM Do YYYY, h:mm:ss a'),
             cityName: data.name,
             country: data.sys.country,
             description: data.weather[0].description,
-            temperature: convertedFromFToC,
-            feels_Like: realFeelconvertedFromFToC,
+            temperature: data.main.temp,
+            feels_Like: data.main.temp.feels_Like,
             icon: data.weather[0].icon,
             id: data.weather[0].id
         }
@@ -46,22 +38,32 @@ class TempManager {
         }
     }
 
-
-
-
-    async getCityData(cityName) {
-        let data = await $.get(`/city/${cityName}`)
-        let converted = data.main.temp - 273.15
-        let realConverted = data.main.feels_like - 273.15
-        converted = converted.toFixed(1)
-        realConverted = realConverted.toFixed(1)
+    makeObj(data) {
         const cityData = {
-            updatedAt: moment().format('MMMM Do YYYY, h:mm:ss a'),
+            updatedAt: new moment().format('MMMM Do YYYY, h:mm:ss a'),
             cityName: data.name,
             country: data.sys.country,
             description: data.weather[0].description,
-            temperature: converted,
-            feels_Like: realConverted,
+            temperature: data.main.temp,
+            feels_Like: data.main.temp.feels_Like,
+            icon: data.weather[0].icon,
+            id: data.weather[0].id
+
+        }
+        return cityData
+
+    }
+
+    async getCityData(cityName) {
+        let data = await $.get(`/city/${cityName}`)
+
+        const cityData = {
+            updatedAt: new moment().format('MMMM Do YYYY, h:mm:ss a'),
+            cityName: data.name,
+            country: data.sys.country,
+            description: data.weather[0].description,
+            temperature: data.main.temp,
+            feels_Like: data.main.temp.feels_Like,
             icon: data.weather[0].icon,
             id: data.weather[0].id
 

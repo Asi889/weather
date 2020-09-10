@@ -1,35 +1,25 @@
 const temp = new TempManager()
 const rend = new Renderer()
-const time = moment().format('MMMM Do YYYY, h:mm:ss a')
 
 
 const loadPage = async (cords) => {
+    let x = new moment()
 
-    console.log(`hello`);
-    const newTime = moment().format('MMMM Do YYYY, h:mm:ss ')
     await temp.geoFindMe(cords)
     await temp.getDataFromDB()
-    const oo = temp.cityData[0].updatedAt
-    console.log(oo);
-    
+
+    let oo = temp.cityData[1].updatedAt
+    let duration = moment.duration(x.diff(oo))
+    console.log(duration);
 
 
-    rend.renderData(temp.cityData)
+    if (duration._data.hours > 3) {
+        await temp.updateCity($cityName)
+        rend.renderData(temp.cityData)
 
-    // const ww= temp.cityData[1].updatedAt
-    // const tt=   new Date() - ww
-    // console.log(newTime)
-    // if(newTime<ww){
-    //     console.log(`he`);
-
-    // }else{
-    //     console.log(`ho`);
-    // }
-    // console.log(ww);;
-    // console.log(tt);
-    // if(!(temp.cityData[0].updateCity-time)<1){
-
-    // }
+    } else {
+        rend.renderData(temp.cityData)
+    }
 
 }
 
@@ -59,17 +49,10 @@ $(`#list`).on("click", ".save", function () {
 })
 
 $(`#list`).on("click", ".remove", async function () {
-    console.log(`hu`);
     const $cityName = $(this).closest(`.city`).find(`.cityName`).text()
     await temp.deleteCity($cityName)
-    // await temp.getDataFromDB()
-    console.log(temp.cityData);
     rend.renderData(temp.cityData)
-    setTimeout(() => {
-
-    }, 2000);
-
-
+    
 })
 
 $(`#list`).on(`click`, `.refresh`, async function () {
