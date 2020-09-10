@@ -1,0 +1,22 @@
+{
+  "name": "weather",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodmone server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "express": "^4.17.1",
+    "jquery": "^3.5.1",
+    "moment": "^2.27.0",
+    "mongoose": "^5.10.2",
+    "request": "^2.88.2",
+    "urllib": "^2.36.1"
+  }
+}
