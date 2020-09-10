@@ -1,21 +1,29 @@
 const temp = new TempManager()
 const rend = new Renderer()
 
+// on loadpage first geting current time / then coordinates(Lat/Long) 
+// then checking if there is a saved city- if there is we check if the duration is 
+// more then 3 hours to update the db or not.
+const loadPage = async function (cords) {
 
-const loadPage = async (cords) => {
-    let x = new moment()
+    const currentTime = new moment()
 
     await temp.geoFindMe(cords)
     await temp.getDataFromDB()
 
-    let oo = temp.cityData[1].updatedAt
-    let duration = moment.duration(x.diff(oo))
-    console.log(duration);
+    if (temp.cityData.length > 1) {
+        let firstSavedCity = temp.cityData[1].updatedAt
+        const duration = moment.duration(currentTime.diff(firstSavedCity))._data.hours
 
+        if (duration > 3) {
+            console.log(`boom`);
+            temp.cityData.forEach(i => { temp.updateCity(i.cityName) });
+            rend.renderData(temp.cityData)
+        } else {
 
-    if (duration._data.hours > 3) {
-        await temp.updateCity($cityName)
-        rend.renderData(temp.cityData)
+            rend.renderData(temp.cityData)
+        }
+        console.log(`works`);
 
     } else {
         rend.renderData(temp.cityData)
@@ -23,6 +31,7 @@ const loadPage = async (cords) => {
 
 }
 
+//getting location from browser and invoking loadpage with position 
 if (!navigator.geolocation) {
     console.log('Geolocation is not supported by your browser')
 } else {
@@ -31,16 +40,10 @@ if (!navigator.geolocation) {
     })
 }
 
-
-
-const handleSearch = async () => {
+$(`.searchBtn`).on("click", async function () {
     const $input = $(`input`).val()
     await temp.getCityData($input)
     rend.renderData(temp.cityData)
-}
-
-$(`.searchBtn`).on("click", async () => {
-    handleSearch()
 })
 
 $(`#list`).on("click", ".save", function () {
@@ -52,7 +55,7 @@ $(`#list`).on("click", ".remove", async function () {
     const $cityName = $(this).closest(`.city`).find(`.cityName`).text()
     await temp.deleteCity($cityName)
     rend.renderData(temp.cityData)
-    
+
 })
 
 $(`#list`).on(`click`, `.refresh`, async function () {
