@@ -38,22 +38,6 @@ class TempManager {
         }
     }
 
-    makeObj(data) {
-        const cityData = {
-            updatedAt: new moment().format('MMMM Do YYYY, h:mm:ss a'),
-            cityName: data.name,
-            country: data.sys.country,
-            description: data.weather[0].description,
-            temperature: data.main.temp,
-            feels_Like: data.main.temp.feels_Like,
-            icon: data.weather[0].icon,
-            id: data.weather[0].id
-
-        }
-        return cityData
-
-    }
-
     async getCityData(cityName) {
         let data = await $.get(`/city/${cityName}`)
 
@@ -77,8 +61,6 @@ class TempManager {
         }
 
     }
-
-
 
     saveCity(cityName) {
         for (let i in this.cityData) {
