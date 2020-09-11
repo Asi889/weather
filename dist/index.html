@@ -19,6 +19,7 @@
             <input type="text" placeholder="City Name">
             <button class="searchBtn">Search</button>
         </div>
+        <div id="main"></div>
         <div id="list"></div>
 
     </div>
@@ -28,12 +29,49 @@
             <p class="update">last Updated:{{updatedAt}}</p>
             <div class="topData">
 
+                <h1 class="cityName">{{cityName}}</h1>
+                <h4 class="country">({{country}})</h4>
+                <img class="img" src="http://openweathermap.org/img/wn/{{icon}}@2x.png" alt="" srcset="">
+                <br>
+                <div></div>
+            </div>
+                <!-- <div class="line"></div> -->
+                <i class="far fa-sun slow-spin fa-2x" width="100px"></i>
+                <!-- fa-spin -->
+                <a href=""></a>
+
+                <h4 class="dis">{{description}}</h4>
+                <!-- <img class="img" src="http://openweathermap.org/img/wn/{{icon}}@2x.png" alt="" srcset=""> -->
+                <h1 class="temp">{{temperature}}</h1>
+                <img class="celsius" src="https://image.flaticon.com/icons/png/512/15/15752.png" alt="" srcset="">
+                <!-- <img class="thermo" src="https://png.pngtree.com/png-vector/20190214/ourmid/pngtree-vector-celsius-icon-png-image_384073.jpg"> -->
+                <i class="fas fa-thermometer-half  fa-2x"></i>
+            <br>
+            <!-- <p>Feels like:</p> -->
+            <!-- <img class="inspector" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSz2bLzfrxUpO8I9Psn9shwrPsoqh-Xw4Xj0Q&usqp=CAU"> -->
+            <!-- <p>{{feels_Like}}</p> -->
+            <!-- <button class="save">save</button> -->
+            <!-- <div class="line1"></div> -->
+
+            <div class="bBot">
+            <img class="save" src="https://image.flaticon.com/icons/svg/2810/2810387.svg" class="save" alt="" srcset="">
+            <img class="remove" src="https://image.flaticon.com/icons/svg/1632/1632602.svg" class="save" alt="" srcset="">
+            <img class="refresh" src="https://image.flaticon.com/icons/svg/3208/3208675.svg"  alt="" srcset="">
+            </div>
+            
+        </div>
+        {{/each}}
+    </script>
+
+    <script id="second-template" type="text/x-handlebars-template">
+        {{#each allCityData}}
+        <div class="listCity" data-id="{{id}}">
+            <!-- <p class="update">last Updated:{{updatedAt}}</p> -->
+            <div class="topData">
+
                 <h4 class="cityName">{{cityName}}</h4>
                 <h4 class="country">({{country}})</h4>
                 <img class="img" src="http://openweathermap.org/img/wn/{{icon}}@2x.png" alt="" srcset="">
-
-                <!-- <p class="cityName">{{cityName}}</p>
-                <p class="country">({{country}})</p> -->
                 <br>
                 <div></div>
             </div>
@@ -70,7 +108,6 @@
 
 
 
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.js"integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
