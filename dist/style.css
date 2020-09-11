@@ -12,16 +12,24 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(80,110,239,1) 0%, rgb
 
 
 #container{
+    display: grid;
+    grid-template-areas:
+    'header'
+    'main'
+    'footer';
+    grid-gap: 10px;
+    background-color: #2196F3;
+    padding: 10px;
     position: absolute;
     height: 100vh;
     width: 100%;
 }
 .img{
     position: absolute;
-    top: 3%;
+    top: 27%;
     width: 70px;
     height: 70px;
-    right: 10%;
+    right: 45%;
 }
 
 p{
@@ -29,6 +37,7 @@ p{
 
 }
 .bBot{
+    top: 300px;
     position: relative;
     /* left: 30%;    */
     text-align: center;
@@ -37,6 +46,12 @@ p{
     padding-left: 20px; 
      padding-right: 20px; 
 
+}
+.listCity{
+    grid-area: footer;
+    width: 100vw;
+    height: 100%;
+    background-color: tomato;
 }
 .remove{
     width: 20px;
@@ -55,8 +70,11 @@ p{
     height: 20px;
 }
 .celsius{
-    width: 40px;
-    height: 40px;
+    position: absolute;
+    top: 245px;
+    right: 340px;
+    width: 23px;
+    height: 20px;
 }
 .fa-thermometer-half{
     /* width: 100px;
@@ -84,9 +102,10 @@ p{
     margin-right: auto;
     
 }
-/* .topData{
-    align-content: center;
-} */
+.topData{
+    grid-area: main;
+    /* align-content: center; */
+}
 input{
     width: 90%;
     height: 30px;
@@ -96,6 +115,7 @@ input{
     margin-top: 40px;
 }
 
+
 h1{
     margin-left: auto;
     margin-right: auto;
@@ -104,8 +124,9 @@ h4{
     display: inline-block
 }
 .city{
-    margin-top: 30px; 
+    /* margin-top: 30px;  */
     width: 90%;
+    height: 500px;
     border: solid;
     position: relative;
     margin-left: 30px;
@@ -113,12 +134,13 @@ h4{
 }
 #list{
     width: 90%;
-    height: 100%;
+    /* height: 100%; */
     position: absolute;
     /* text-align: center; */
 
 }
 #nav{
+    grid-area: header;
     text-align: center;
     height: 30%;
 
@@ -167,13 +189,14 @@ h4{
 .temp{
     position: absolute;
     top: 46%;
-    right: 25%;
+    right: 47%;
 }
 .country{
     position: absolute;
-    left: 59%;
+    top:63px;
+    left: 56%;
 }
 .cityName{
-    /* position: absolute; */
-    margin-left: 20%;
+    position: absolute;
+    left: 40%;
 }

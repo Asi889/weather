@@ -43,22 +43,27 @@ if (!navigator.geolocation) {
 $(`.searchBtn`).on("click", async function () {
     const $input = $(`input`).val()
     await temp.getCityData($input)
+    // rend.renderData22(temp.cityData)
     rend.renderData(temp.cityData)
+
 })
 
-$(`#list`).on("click", ".save", function () {
+$(`#main`).on("click", ".save", function () {
     const $cityName = $(this).closest(`.city`).find(`.cityName`).text()
     temp.saveCity($cityName)
 })
 
-$(`#list`).on("click", ".remove", async function () {
+$(`#main`).on("click", ".remove", async function () {
+
     const $cityName = $(this).closest(`.city`).find(`.cityName`).text()
     await temp.deleteCity($cityName)
+    // rend.renderData22(temp.cityData)
     rend.renderData(temp.cityData)
+
 
 })
 
-$(`#list`).on(`click`, `.refresh`, async function () {
+$(`#main`).on(`click`, `.refresh`, async function () {
     const $cityName = $(this).closest(`.city`).find(`.cityName`).text()
     await temp.updateCity($cityName)
     rend.renderData(temp.cityData)
