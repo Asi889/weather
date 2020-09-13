@@ -8,7 +8,7 @@ const path = require('path')
 const Expenses = require("./server/model/city")
 const apii = require("./server/routes/api")
 
-mongoose.connect("mongodb://localhost/WaetherApp",{ useNewUrlParser: true,useUnifiedTopology: true})
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/WaetherApp",{ useNewUrlParser: true,useUnifiedTopology: true})
 
 app.use(express.static(path.join(__dirname, 'dist')))
 app.use(express.static(path.join(__dirname, 'node_modules')))
@@ -23,6 +23,6 @@ const moment = require("moment");
 
 const port= 8500
 
-app.listen(8500, function () {
+app.listen(process.env.PORT || 8500, function () {
     console.log(`Server up and running on port ${port}`)
 })
