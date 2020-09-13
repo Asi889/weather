@@ -4,6 +4,7 @@ class TempManager {
 
     constructor() {
         this.cityData = [];
+        this.listCityData= []
     }
 
     async getDataFromDB() {
@@ -52,9 +53,9 @@ class TempManager {
             id: data.weather[0].id
 
         }
-        const cityy = this.cityData.find(c => c.cityName === cityData.cityName)
-        if (!cityy || this.cityData.length < 1) {
-            this.cityData.push(cityData)
+        const cityy = this.listCityData.find(c => c.cityName === cityData.cityName)
+        if (!cityy || this.listCityData.length < 1) {
+            this.listCityData.push(cityData)
 
         } else {
             console.log(this.cityData);

@@ -44,11 +44,11 @@ $(`.searchBtn`).on("click", async function () {
     const $input = $(`input`).val()
     await temp.getCityData($input)
     // rend.renderData22(temp.cityData)
-    rend.renderData(temp.cityData)
+    rend.renderData22(temp.listCityData)
 
 })
-
-$(`#main`).on("click", ".save", function () {
+///save
+$(`#main`).on("click", ".fa-download", function () {
     const $cityName = $(this).closest(`.city`).find(`.cityName`).text()
     temp.saveCity($cityName)
 })
@@ -62,8 +62,8 @@ $(`#main`).on("click", ".remove", async function () {
 
 
 })
-
-$(`#main`).on(`click`, `.refresh`, async function () {
+//refersh data
+$(`#main`).on(`click`, `.fa-sync`, async function () {
     const $cityName = $(this).closest(`.city`).find(`.cityName`).text()
     await temp.updateCity($cityName)
     rend.renderData(temp.cityData)
