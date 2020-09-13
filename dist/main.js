@@ -7,6 +7,7 @@ const rend = new Renderer()
 const loadPage = async function (cords) {
 
     const currentTime = new moment()
+    console.log(currentTime);
 
     await temp.geoFindMe(cords)
     await temp.getDataFromDB()
@@ -14,19 +15,25 @@ const loadPage = async function (cords) {
     if (temp.cityData.length > 1) {
         let firstSavedCity = temp.cityData[1].updatedAt
         const duration = moment.duration(currentTime.diff(firstSavedCity))._data.hours
+        // console.log(duration);
 
         if (duration > 3) {
             console.log(`boom`);
             temp.cityData.forEach(i => { temp.updateCity(i.cityName) });
             rend.renderData(temp.cityData)
+            rend.renderData22(temp.listCityData)
+
         } else {
 
             rend.renderData(temp.cityData)
+            rend.renderData22(temp.listCityData)
         }
         console.log(`works`);
 
     } else {
         rend.renderData(temp.cityData)
+        rend.renderData22(temp.listCityData)
+
     }
 
 }
@@ -40,30 +47,37 @@ if (!navigator.geolocation) {
     })
 }
 
+
+
+
+
+
 $(`.searchBtn`).on("click", async function () {
     const $input = $(`input`).val()
     await temp.getCityData($input)
-    // rend.renderData22(temp.cityData)
     rend.renderData22(temp.listCityData)
 
 })
+
 ///save
-$(`#main`).on("click", ".fa-download", function () {
-    const $cityName = $(this).closest(`.city`).find(`.cityName`).text()
+$(`#list`).on("click", ".fa-download", function () {
+    const $cityName = $(this).closest(`.listCity`).find(`.cityNamel`).text()
+    console.log();
+    console.log($cityName);
     temp.saveCity($cityName)
 })
 
-$(`#main`).on("click", ".remove", async function () {
+$(`#list`).on("click", ".remove", async function () {
 
-    const $cityName = $(this).closest(`.city`).find(`.cityName`).text()
+    const $cityName = $(this).closest(`.listCity`).find(`.cityNamel`).text()
     await temp.deleteCity($cityName)
-    // rend.renderData22(temp.cityData)
-    rend.renderData(temp.cityData)
+    rend.renderData22(temp.listCityData)
 
 
 })
 //refersh data
 $(`#main`).on(`click`, `.fa-sync`, async function () {
+    console.log(`heh`);
     const $cityName = $(this).closest(`.city`).find(`.cityName`).text()
     await temp.updateCity($cityName)
     rend.renderData(temp.cityData)

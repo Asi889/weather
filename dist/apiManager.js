@@ -9,7 +9,7 @@ class TempManager {
 
     async getDataFromDB() {
         const data = await $.get(`/cities`)
-        this.cityData = [...this.cityData, ...data]
+        this.listCityData = [...this.listCityData, ...data]
     }
 
     async geoFindMe(position) {
@@ -43,8 +43,8 @@ class TempManager {
         let data = await $.get(`/city/${cityName}`)
 
         const cityData = {
-            updatedAt: new moment().format('MMMM Do YYYY, h:mm:ss a'),
             cityName: data.name,
+            updatedAt: new moment().format('MMMM Do YYYY, h:mm:ss a'),
             country: data.sys.country,
             description: data.weather[0].description,
             temperature: data.main.temp,
@@ -54,7 +54,7 @@ class TempManager {
 
         }
         const cityy = this.listCityData.find(c => c.cityName === cityData.cityName)
-        if (!cityy || this.listCityData.length < 1) {
+        if (!cityy ) {
             this.listCityData.push(cityData)
 
         } else {
@@ -64,12 +64,14 @@ class TempManager {
     }
 
     saveCity(cityName) {
-        for (let i in this.cityData) {
-            if (cityName === this.cityData[i].cityName) {
-                $.post(`/city`, this.cityData[i], (data) => {
-                    const cityy = this.cityData.find(c => c.cityName === data.cityName)
+        for (let i in this.listCityData) {
+            if (cityName === this.listCityData[i].cityName) {
+                $.post(`/city`, this.listCityData[i], (data) => {
+                    console.log(data);
+                    const cityy = this.listCityData.find(c => c.cityName === data.cityName)
+                    console.log(cityy);
                     if (!cityy) {
-                        this.cityData.push(cityy)
+                        this.listCityData.push(cityy)
                     } else {
                         console.log(`city is already saved`);
                     }
@@ -87,7 +89,7 @@ class TempManager {
             url: `/city/${cityName}`,
             success: () => {
                 console.log(`entered success`);
-                this.cityData = this.cityData.filter(i => i.cityName !== cityName)
+                this.listCityData = this.listCityData.filter(i => i.cityName !== cityName)
             }
         })
     }
