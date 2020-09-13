@@ -9,14 +9,14 @@ class Renderer {
 
     }
 
-    // renderData22(allCityData) {
-    //     $('#list').empty()
-    //     const source = $(`#second-template`).html();
-    //     const template = Handlebars.compile(source);
-    //     let newHTML = template({allCityData});
-    //      $('#list').append(newHTML);
+    renderData22(allCityData) {
+        $('#list').empty()
+        const source = $(`#second-template`).html();
+        const template = Handlebars.compile(source);
+        let newHTML = template({allCityData});
+         $('#list').append(newHTML);
 
 
-    // }
+    }
     
 }
