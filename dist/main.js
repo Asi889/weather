@@ -50,17 +50,26 @@ if (!navigator.geolocation) {
 }
 
 
+$('#text1').keydown( async function (event) {
+    if (event.which == '13') {
+        event.preventDefault();
+        event.stopPropagation();
+        const $input = $(`input`).val()
+        // alert($input)
+        await temp.getCityData($input)
+        rend.renderData22(temp.listCityData)
+    }
+});
 
 
 
 
+// $(`.searchBtn`).on("click", async function () {
+//     const $input = $(`input`).val()
+//     await temp.getCityData($input)
+//     rend.renderData22(temp.listCityData)
 
-$(`.searchBtn`).on("click", async function () {
-    const $input = $(`input`).val()
-    await temp.getCityData($input)
-    rend.renderData22(temp.listCityData)
-
-})
+// })
 
 ///save
 $(`#list`).on("click", ".fa-download", function () {
@@ -86,6 +95,8 @@ $(`#main`).on(`click`, `.fa-sync`, async function () {
     rend.renderData(temp.cityData)
 
 })
+
+
 
 // function handle(e){
 //     if(e.keyCode === 13){
