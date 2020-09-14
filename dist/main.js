@@ -17,7 +17,7 @@ const loadPage = async function (cords) {
     if (temp.listCityData.length > 0) {
         let firstSavedCity = temp.listCityData[0].updatedAt
         const duration = moment.duration(currentTime.diff(firstSavedCity))._data.hours
-        // console.log(duration);
+        console.log(duration);
 
         if (duration > 3) {
             console.log(`boom`);
@@ -54,8 +54,6 @@ $('#text1').keydown( async function (event) {
     if (event.which == '13') {
         event.preventDefault();
         event.stopPropagation();
-        const $input = $(`input`).val()
-        // alert($input)
         await temp.getCityData($input)
         rend.renderData22(temp.listCityData)
     }
@@ -91,6 +89,7 @@ $(`#list`).on("click", ".remove", async function () {
 $(`#main`).on(`click`, `.fa-sync`, async function () {
     console.log(`heh`);
     const $cityName = $(this).closest(`.city`).find(`.cityName`).text()
+    console.log($cityName);
     await temp.updateCity($cityName)
     rend.renderData(temp.cityData)
 

@@ -103,7 +103,7 @@ class TempManager {
                 for (let i in this.cityData) {
                     if (this.cityData[i]._id === data._id) {
                         this.cityData[i] = data
-                        this.cityData[i].updatedAt = moment().format('MMMM Do YYYY, h:mm:ss a')
+                        // this.cityData[i].updatedAt = moment().format('MMMM Do YYYY, h:mm:ss a')
                     }
                 }
             }
