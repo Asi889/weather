@@ -13,7 +13,8 @@
 <body>
     <div id="container">
         <div id="nav">
-            <input type="text" placeholder="City Name">
+            <input id="text1"  type="text" placeholder="City Name">
+            <!-- onkeypress="handle(event)" -->
             <button class="searchBtn">Search</button>
         </div>
 
@@ -21,7 +22,7 @@
         <div id="list"></div>
 
     </div>
-    
+
     <script id="first-template" type="text/x-handlebars-template">
         {{#each allCityData}}
         <div class="city" data-id="{{id}}">
@@ -34,7 +35,7 @@
 
                 <img class="img" src="http://openweathermap.org/img/wn/{{icon}}@2x.png" alt="" srcset="">
                 <br>
-                <p class="update"> last Updated:{{updatedAt}} </p>
+                <p class="update"> last Updated:</p><p class="update">{{updatedAt}} </p>
                 <h3 class="dis">{{description}}</h3>
                 <h2 class="temp">{{temperature}}</h2>
                 <div class="celsius">o</div>
