@@ -74,7 +74,7 @@ router.put(`/city/:cityName`, async (req, res) => {
     
         if (!ifCity) {
             const updatedCityNotIndb = {
-                updatedAt: new Date(),
+                updatedAt: moment().format('MMMM Do YYYY, h:mm:ss a'),
                 cityName: data.data.name,
                 country: data.data.sys.country,
                 description: data.data.weather[0].description,
