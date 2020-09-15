@@ -64,7 +64,7 @@ input[type="text"], textarea {
 .city{ 
     grid-area: main;
     display: grid ; 
-    grid-template-columns: 30% 70% ;
+    grid-template-columns: 25% 75% ;
 
     grid-template-areas:
     'a a'
