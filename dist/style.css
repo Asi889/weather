@@ -1,0 +1,250 @@
+
+body{
+    font-family: 'Varela Round', sans-serif;
+}
+
+#container{
+    background: linear-gradient(to right, rgb(232, 203, 192), rgb(99, 111, 164));
+    display: grid;
+    grid-template-rows: 5% 40% auto;
+    grid-template-areas:
+    'header'
+    'main'
+    'footer';
+    padding: 10px;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+}
+#nav{
+    grid-area: header;
+    
+}
+
+input{
+    width: 100vw;
+    height: 30px;
+    border-radius: 5px;
+    padding: 0;
+}
+input[type="text"], textarea {
+
+    background-image:linear-gradient(to right, rgb(232, 203, 192), rgb(99, 111, 164)); 
+  
+  }
+
+
+#main{
+width: 410px;
+margin-left: auto;
+margin-right: auto;
+}
+.city{ 
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    grid-area: main;
+    display: grid ; 
+    grid-template-columns: 35% 65% ;
+
+    grid-template-areas:
+    'a a'
+    'c d'
+    'e f'
+    'g h'
+    'k k';
+ }
+
+ .topData{
+     grid-area:a ;
+    top: 17%;
+    left: 15%;
+   
+    height: 50px;
+    width: 100%;
+    
+}
+
+.cityName{
+    display: inline-block;
+}
+.country{
+    display: inline-block;
+}
+
+.img{
+margin-top: -8px;
+    grid-area: d;
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    /* margin: 0; */
+    padding: 0;
+}
+.update1{
+    text-align: center;
+    grid-area: h;
+}
+
+.fa-sync{
+    grid-area: f;
+    bottom: 5px;
+    /* text-align: top; */
+    /* margin-left: 80%; */
+}
+
+.update{
+    text-align: center;
+
+    grid-area: g;
+}
+
+.dis{
+    margin: 0;
+    padding: 0;
+    grid-area: e;
+
+}
+.temp{
+    grid-area: c;
+    display: inline-block;
+}
+
+.celsius{
+       grid-area: c;
+       margin-left: 45%;
+       margin-top:5% ;
+}
+.line{
+    grid-area: k;
+    width: 95vw;
+    height: 2px;
+    background-color: black;
+}
+
+
+
+#list{
+    display: flex;
+    overflow: auto;
+    /* justify-content: center; */
+    width: 100vw;
+    /* background-color: rgba(15, 32, 68, 0.932); */
+    /* display: grid;
+    grid-template-rows: 20%,20%, auto; */
+    grid-area: footer;
+    display: block;
+    
+}
+.listCity{
+    /* grid-area: footer; */
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    width: 370px;
+    border: solid;
+    /* display: inline-block; */
+    height: 60px;
+    border-radius: 1em;
+    background-color: rgba(61, 58, 58, 0.808);
+    text-align: center;
+}
+
+.cityNamel{
+    display: inline-block;
+    color: white;
+
+}
+
+.imgl{
+    width: 30px;
+    height: 30px;
+
+}
+
+.countryl{
+    display: inline-block;
+    color: white;
+}
+
+.disList{
+    display: inline-block;
+    color: white;
+    
+}
+
+.tempList{
+    display: inline-block;
+    color: white;
+
+
+}
+
+.fa-download{
+    width: 20px;
+
+}
+
+.remove{
+    width: 20px;
+    height: 20px;
+
+}
+
+
+.bBot{
+    bottom: 26%;
+    position: absolute;
+    right: 10%;   
+}
+
+.save{
+    width: 20px;
+    height: 20px;
+}
+
+.refresh{
+    
+    width: 20px;
+    height: 20px;
+}
+
+.fa-thermometer-half{
+    position: absolute;
+    top: 52%;
+    right:10%
+}
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
