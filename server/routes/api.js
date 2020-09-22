@@ -40,10 +40,8 @@ router.get(`/cities`, async (req, res) => {
 router.post(`/city`, async (req, res) => {
     try {
         const reqq = req.body
-        console.log(reqq);
         reqq.updatedAt = new moment
         const newCity = new City(reqq)
-        console.log(newCity);
         const ifCity = await City.find({})
         const cityy = ifCity.find(c => c.cityName === reqq.cityName)
         if (!cityy) {

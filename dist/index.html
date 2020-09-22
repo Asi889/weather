@@ -14,8 +14,6 @@
     <div id="container">
         <div id="nav">
             <input id="text1"  type="text" placeholder="City Name">
-            <!-- onkeypress="handle(event)" -->
-            <!-- <button class="searchBtn">Search</button> -->
         </div>
 
         <div id="main"></div>
@@ -26,22 +24,20 @@
     <script id="first-template" type="text/x-handlebars-template">
         {{#each allCityData}}
         <div class="city" data-id="{{id}}">
+
             <div class="topData">
-                <!-- <div class="title"> -->
                 <h3 class="cityName">{{cityName}},    </h3>
                 <h4 class="country">      ({{ country}})</h4>
-      
              </div>
 
                 <img class="img" src="http://openweathermap.org/img/wn/{{icon}}@2x.png" alt="" srcset="">
                 <br>
-                <h3 class="dis">{{description}}</h3>
-                <p class="update"> last updated:</p><p class="update1">{{updatedAt}} </p>
+                <h4 class="dis">{{description}}</h4>
+                <p class="update"> last updated:</p>
+                <p class="update1">{{updatedAt}} </p>
+                <i class="fas fa-sync"></i><br>
                 <h3 class="temp">{{temperature}}</h3>
                 <div class="celsius">o</div>
-                <div class="line"></div>
-                    <!-- <i class="fas fa-download"></i> -->
-                    <i class="fas fa-sync"></i>
             </div>  
         </div>
         {{/each}}
@@ -51,8 +47,6 @@
     <script id="second-template" type="text/x-handlebars-template">
         {{#each allCityData}}
         <div class="listCity" data-id="{{id}}">
-            <!-- <p class="update">last Updated:{{updatedAt}}</p> -->
-
                 <h3 class="cityNamel">{{cityName}}</h3>
                 <h3 class="countryl">({{country}})</h3>
                 <img class="imgl" src="http://openweathermap.org/img/wn/{{icon}}@2x.png" alt="" srcset="">
@@ -71,11 +65,8 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
-
-
     <script src="apiManager.js"></script>
     <script src="render.js"></script>
     <script src="main.js"></script>

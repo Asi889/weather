@@ -23,12 +23,12 @@ const loadPage = async function (cords) {
             console.log(`boom`);
             temp.cityData.forEach(i => { temp.updateCity(i.cityName) });
             rend.renderData(temp.cityData)
-            rend.renderData22(temp.listCityData)
+            rend.renderList(temp.listCityData)
 
         } else {
 
             rend.renderData(temp.cityData)
-            rend.renderData22(temp.listCityData)
+            rend.renderList(temp.listCityData)
         }
         console.log(`works`);
 
@@ -49,39 +49,33 @@ if (!navigator.geolocation) {
     })
 }
 
-
+//get data 
 $('#text1').keydown( async function (event) {
     if (event.which == '13') {
+        const $input = $(`input`).val()
         event.preventDefault();
         event.stopPropagation();
         await temp.getCityData($input)
-        rend.renderData22(temp.listCityData)
+        rend.renderList(temp.listCityData)
     }
 });
 
 
 
 
-// $(`.searchBtn`).on("click", async function () {
-//     const $input = $(`input`).val()
-//     await temp.getCityData($input)
-//     rend.renderData22(temp.listCityData)
-
-// })
-
-///save
+//save to db
 $(`#list`).on("click", ".fa-download", function () {
     const $cityName = $(this).closest(`.listCity`).find(`.cityNamel`).text()
     console.log();
     console.log($cityName);
     temp.saveCity($cityName)
 })
-
+//remove
 $(`#list`).on("click", ".remove", async function () {
 
     const $cityName = $(this).closest(`.listCity`).find(`.cityNamel`).text()
     await temp.deleteCity($cityName)
-    rend.renderData22(temp.listCityData)
+    rend.renderList(temp.listCityData)
 
 
 })
@@ -97,30 +91,6 @@ $(`#main`).on(`click`, `.fa-sync`, async function () {
 
 
 
-// function handle(e){
-//     if(e.keyCode === 13){
-//         e.preventDefault(); // Ensure it is only this code that rusn
-
-//         alert("Enter was pressed was presses");
-//     }
-// }
-// $(`#text`).on('keypress', function (e) {
-//     if (which == 13) {
-//         alert('You pressed enter!');
-//     }
-// });
-
-
-// $("#text").keypress(function () {
-//     console.log();
-// });
-
-
-// $("#text").on("keyup",function (event) {
-//     if (event.keyCode == 13) {
-//         $("#id_of_button").click();
-//     }
-// });
 
 
 

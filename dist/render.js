@@ -9,7 +9,7 @@ class Renderer {
 
     }
 
-    renderData22(allCityData) {
+    renderList(allCityData) {
         $('#list').empty()
         const source = $(`#second-template`).html();
         const template = Handlebars.compile(source);
